@@ -1,15 +1,27 @@
 def is_palindrome(text):
+    if not isinstance(text, str):
+        raise TypeError("Input must be a string")
+
     text = "".join([x for x in text if x.isalpha()]).lower()
-    return text[::-1] == text[::1]
+    return text[::-1] == text
 
 def pals_from_string(text):
+    if not isinstance(text, str):
+        raise TypeError("Input must be a string")
+
     text = text.split()
-    return [word for word in text if word[::1] == word[::-1]]
+    return [word for word in text if word == word[::-1]]
 
 def pals_from_string_list(list_of_strings):
-    return [word for word in list_of_strings if word[::1] == word[::-1]]
+    if not isinstance(list_of_strings, list):
+        raise TypeError("Input must be a list")
+
+    return [word for word in list_of_strings if word == word[::-1]]
 
 def count_chars(text):
+    if not isinstance(text, str):
+        raise TypeError("Input must be a string")
+
     the_count = {}
     for letter in text:
         if letter.isalpha():
@@ -17,14 +29,17 @@ def count_chars(text):
     return the_count
 
 def reverse_each_word(text):
-    if isinstance(text, str):
-        text = text.split()
-        reversed_text = [word[::-1] for word in text]
-        return " ".join(reversed_text)
-    else:
+    if not isinstance(text, str):
         raise TypeError("Input must be a string")
 
+    text = text.split()
+    reversed_text = [word[::-1] for word in text]
+    return " ".join(reversed_text)
+
 def remove_dupes(the_list):
+    if not isinstance(the_list, list):
+        raise TypeError("Input must be a list")
+
     # fictional benchmark 
     if len(the_list) > 1000:
         return list(set(the_list))
@@ -39,10 +54,10 @@ def remove_dupes(the_list):
 def return_evens(num_list):
     if not isinstance(num_list, list):
         raise TypeError("Input must be a list")
+
     return [x for x in num_list if x % 2 == 0]
 
 # O U T P U T
-
 print(is_palindrome("A Man, A Plan, A Canal, Panama!"))
 # True 
 
